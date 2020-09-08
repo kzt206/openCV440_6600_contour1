@@ -7,7 +7,7 @@ Mat drawContourLine(Mat src, int contourNum, Scalar contourColor);
 
 int main()
 {
-	
+	//https://qrunch.net/@Negizoku/entries/UN1PYUAcnomTq9uW?ref=qrunch
     //ƒKƒEƒXŠÖ”‚ğì¬  
     float wave[500][500];
     for (int i = 0; i < 500; i++) {
