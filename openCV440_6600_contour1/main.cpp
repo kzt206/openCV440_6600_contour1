@@ -5,6 +5,11 @@ using namespace cv;
 
 Mat drawContourLine(Mat src, int contourNum, Scalar contourColor);
 
+
+int lowThreshold = 10;
+const int max_lowThreshold = 100;
+const int kernel_size = 3;
+
 int main()
 {
 	//https://qrunch.net/@Negizoku/entries/UN1PYUAcnomTq9uW?ref=qrunch
@@ -62,13 +67,18 @@ Mat drawContourLine(Mat src, int contourNum, Scalar contourColor) {
     //return roughGrad;
     imshow("roughGrad", roughGrad);
     waitKey(0);
-
+    imwrite("roughGrad.jpg", roughGrad);
 
 
     //‡BŠK’²‚ğr‚­‚µ‚½‰æ‘œ‚ÌƒGƒbƒWŒŸo  
     Mat contour = src.clone();
-    //cv::Canny(roughGrad, contour, 1., 2.);
-    imshow("contour", contour);
+    Mat dst;
+    dst.create(src.size(), src.type());
+    //Canny(roughGrad, contour, 1, step -1, kernel_size);
+    dst = Scalar::all(0);
+    src.copyTo(dst, contour);
+
+    imshow("contour", dst);
     waitKey(0);
 
 
